@@ -18,7 +18,7 @@ message("Setting paths to OpenSplice")
 if(WIN32)
 	set(OS_BASE_DIR "${CMAKE_SOURCE_DIR}/opensplice/HDE/x86_64.win64")
 	# Also append path to DLLs
-	list(APPEND OS_LIB_DIR "${OS_BIN_DIR}")
+	list(APPEND OS_LIB_DIR "${OS_BASE_DIR}/bin")
 	set(LIB_PATH_ENV "PATH")
 elseif(UNIX)
 	set(OS_BASE_DIR "${CMAKE_SOURCE_DIR}/opensplice/HDE/x86_64.linux")
@@ -82,8 +82,10 @@ target_link_libraries(${SUB} ${DCPSISOCPP2} ${DDSKERNEL} ${IDL_LIB})
 find_file(DCPSISOCPP2_LIB NAMES "dcpsisocpp2.dll" "libdcpsisocpp2.so" HINTS ${OS_LIB_DIR} REQUIRED)
 find_file(DDSKERNEL_LIB NAMES "ddskernel.dll" "libddskernel.so" HINTS ${OS_LIB_DIR} REQUIRED)
 find_file(SPLICED_LIB NAMES "spliced.dll" "libspliced.so" HINTS ${OS_LIB_DIR} REQUIRED)
+find_file(DDSI2_LIB NAMES "ddsi2.dll" "libddsi2.so" HINTS ${OS_LIB_DIR} REQUIRED)
 add_custom_target("copy_libs" ALL
 	COMMAND ${CMAKE_COMMAND} -E copy ${DCPSISOCPP2_LIB} ${CMAKE_BINARY_DIR}
 	COMMAND ${CMAKE_COMMAND} -E copy ${DDSKERNEL_LIB} ${CMAKE_BINARY_DIR}
 	COMMAND ${CMAKE_COMMAND} -E copy ${SPLICED_LIB} ${CMAKE_BINARY_DIR}
+	COMMAND ${CMAKE_COMMAND} -E copy ${DDSI2_LIB} ${CMAKE_BINARY_DIR}
 	DEPENDS ${PUB} ${SUB})
