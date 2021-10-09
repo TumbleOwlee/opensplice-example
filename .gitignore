@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# opensplice
+opensplice
+
+# build
+build
