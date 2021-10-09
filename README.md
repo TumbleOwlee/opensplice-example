@@ -28,6 +28,9 @@ $> cmake -G "Unix Makefiles" .. # Linux
 $> cmake --build . --config Release
 $>
 $> # Execute publisher/subscriber
+$> # OSPL_URI is needed for opensplice
+$> set OSPL_URI=file://%cd%/../conf/ospl.xml # Windows
+$> export OSPL_URI=file://$(pwd)/../conf/ospl.xml # Linux
 $> # All necessary opensplice libraries are copies into build after compilation
 $> ./Release/publisher(.exe)
 $> ./Release/subscriber(.exe)
