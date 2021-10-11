@@ -16,7 +16,7 @@ $> git clone https://github.com/tumbleowlee/opensplice-example
 $> cd opensplice-example
 $>
 $> # Download the release of github.com/ADLINK-IST/opensplice/releases 
-$> # and unzip/untar the zip/tar into opensplice
+$> # and unzip/untar the zip/tar
 $>
 $> # Building 
 $> mkdir build
@@ -30,7 +30,10 @@ $>
 $> # Execute publisher/subscriber
 $> # OSPL_URI is needed for opensplice
 $> set OSPL_URI=file://%cd%/../conf/ospl.xml # Windows
+$> set OSPL_HOME=<PATH_TO_YOUR_OPENSPLICE_RELEASE> # Windows
 $> export OSPL_URI=file://$(pwd)/../conf/ospl.xml # Linux
+$> export OSPL_HOME=<PATH_TO_YOUR_OPENSPLICE_RELEASE> # Linux
+$>
 $> # All necessary opensplice libraries are copies into build after compilation
 $> ./Release/publisher(.exe)
 $> ./Release/subscriber(.exe)
